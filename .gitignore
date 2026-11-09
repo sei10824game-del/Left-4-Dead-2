@@ -6,3 +6,4 @@ tools/preview/
 *.iml
 .idea/
 __pycache__/
+.claude/
