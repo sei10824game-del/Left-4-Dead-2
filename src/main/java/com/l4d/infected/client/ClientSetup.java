@@ -43,7 +43,7 @@ public class ClientSetup {
         ALL.add(new Reg<>("jockey", L4D.JOCKEY, JockeyModel::new, 0.4f, 1f, 0));
         ALL.add(new Reg<>("charger", L4D.CHARGER, ChargerModel::new, 0.9f, 1f, 0));
         ALL.add(new Reg<>("tank", L4D.TANK, TankModel::new, 1.4f, 1f, 0));
-        ALL.add(new Reg<>("witch", L4D.WITCH, WitchModel::new, 0.5f, 1f, 0));
+        ALL.add(new Reg<>("witch", L4D.WITCH, WitchModel::new, 0.5f, 1f, 2));
     }
 
     @SubscribeEvent
@@ -54,9 +54,9 @@ public class ClientSetup {
     @SubscribeEvent
     public static void renderers(EntityRenderersEvent.RegisterRenderers e) {
         for (Reg<?> r : ALL) reg(e, r);
-        e.registerEntityRenderer(L4D.ACID_SPIT.get(), c -> new ThrownItemRenderer<>(c, 1f, true));
-        e.registerEntityRenderer(L4D.TANK_ROCK.get(), c -> new ThrownItemRenderer<>(c, 3f, true));
-        e.registerEntityRenderer(L4D.ACID_POOL.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
+        e.registerEntityRenderer(L4D.ACID_SPIT.get(), AcidRenderer.Spit::new);
+        e.registerEntityRenderer(L4D.TANK_ROCK.get(), TankRockRenderer::new);
+        e.registerEntityRenderer(L4D.ACID_POOL.get(), AcidRenderer.Pool::new);
     }
 
     private static <T extends Infected> void reg(EntityRenderersEvent.RegisterRenderers e, Reg<T> r) {
