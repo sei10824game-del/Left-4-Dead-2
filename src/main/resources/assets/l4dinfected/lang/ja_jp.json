@@ -36,5 +36,7 @@
  "entity.l4dinfected.tank": "タンク",
  "item.l4dinfected.tank_spawn_egg": "タンク スポーンエッグ",
  "entity.l4dinfected.witch": "ウィッチ",
- "item.l4dinfected.witch_spawn_egg": "ウィッチ スポーンエッグ"
+ "item.l4dinfected.witch_spawn_egg": "ウィッチ スポーンエッグ",
+ "entity.l4dinfected.meatwall": "ミートウォール",
+ "item.l4dinfected.meatwall_spawn_egg": "ミートウォール スポーンエッグ"
 }

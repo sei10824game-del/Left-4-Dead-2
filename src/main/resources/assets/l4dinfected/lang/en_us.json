@@ -36,5 +36,7 @@
  "item.l4dinfected.jockey_spawn_egg": "Jockey Spawn Egg",
  "item.l4dinfected.charger_spawn_egg": "Charger Spawn Egg",
  "item.l4dinfected.tank_spawn_egg": "Tank Spawn Egg",
- "item.l4dinfected.witch_spawn_egg": "Witch Spawn Egg"
+ "item.l4dinfected.witch_spawn_egg": "Witch Spawn Egg",
+ "entity.l4dinfected.meatwall": "Meat Wall",
+ "item.l4dinfected.meatwall_spawn_egg": "Meat Wall Spawn Egg"
 }

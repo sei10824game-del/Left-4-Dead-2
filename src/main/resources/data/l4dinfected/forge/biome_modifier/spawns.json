@@ -2,22 +2,113 @@
  "type": "forge:add_spawns",
  "biomes": "#minecraft:is_overworld",
  "spawners": [
-  {"type":"l4dinfected:common","weight":40,"minCount":3,"maxCount":8},
-  {"type":"l4dinfected:ceda","weight":3,"minCount":1,"maxCount":2},
-  {"type":"l4dinfected:mudman","weight":3,"minCount":1,"maxCount":3},
-  {"type":"l4dinfected:roadcrew","weight":3,"minCount":1,"maxCount":2},
-  {"type":"l4dinfected:fallen","weight":2,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:riot","weight":3,"minCount":1,"maxCount":2},
-  {"type":"l4dinfected:clown","weight":2,"minCount":1,"maxCount":2},
-  {"type":"l4dinfected:jimmy","weight":1,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:boomer","weight":5,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:boomette","weight":4,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:hunter","weight":6,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:smoker","weight":5,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:spitter","weight":5,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:jockey","weight":5,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:charger","weight":4,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:tank","weight":1,"minCount":1,"maxCount":1},
-  {"type":"l4dinfected:witch","weight":2,"minCount":1,"maxCount":1}
+  {
+   "type": "l4dinfected:common",
+   "weight": 40,
+   "minCount": 3,
+   "maxCount": 8
+  },
+  {
+   "type": "l4dinfected:ceda",
+   "weight": 3,
+   "minCount": 1,
+   "maxCount": 2
+  },
+  {
+   "type": "l4dinfected:mudman",
+   "weight": 3,
+   "minCount": 1,
+   "maxCount": 3
+  },
+  {
+   "type": "l4dinfected:roadcrew",
+   "weight": 3,
+   "minCount": 1,
+   "maxCount": 2
+  },
+  {
+   "type": "l4dinfected:fallen",
+   "weight": 2,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:riot",
+   "weight": 3,
+   "minCount": 1,
+   "maxCount": 2
+  },
+  {
+   "type": "l4dinfected:clown",
+   "weight": 2,
+   "minCount": 1,
+   "maxCount": 2
+  },
+  {
+   "type": "l4dinfected:jimmy",
+   "weight": 1,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:boomer",
+   "weight": 5,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:boomette",
+   "weight": 4,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:hunter",
+   "weight": 6,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:smoker",
+   "weight": 5,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:spitter",
+   "weight": 5,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:jockey",
+   "weight": 5,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:charger",
+   "weight": 4,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:tank",
+   "weight": 1,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:witch",
+   "weight": 2,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:meatwall",
+   "weight": 1,
+   "minCount": 1,
+   "maxCount": 1
+  }
  ]
 }
