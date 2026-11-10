@@ -109,6 +109,18 @@
    "weight": 1,
    "minCount": 1,
    "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:screamer",
+   "weight": 2,
+   "minCount": 1,
+   "maxCount": 1
+  },
+  {
+   "type": "l4dinfected:crawler",
+   "weight": 4,
+   "minCount": 1,
+   "maxCount": 3
   }
  ]
 }

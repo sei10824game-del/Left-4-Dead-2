@@ -38,5 +38,9 @@
  "entity.l4dinfected.witch": "ウィッチ",
  "item.l4dinfected.witch_spawn_egg": "ウィッチ スポーンエッグ",
  "entity.l4dinfected.meatwall": "ミートウォール",
- "item.l4dinfected.meatwall_spawn_egg": "ミートウォール スポーンエッグ"
+ "item.l4dinfected.meatwall_spawn_egg": "ミートウォール スポーンエッグ",
+ "entity.l4dinfected.screamer": "スクリーマー",
+ "item.l4dinfected.screamer_spawn_egg": "スクリーマー スポーンエッグ",
+ "entity.l4dinfected.crawler": "クローラー",
+ "item.l4dinfected.crawler_spawn_egg": "クローラー スポーンエッグ"
 }

@@ -74,6 +74,8 @@ public class L4D {
     public static final RegistryObject<EntityType<TankInfected>> TANK = inf("tank", TankInfected::new, 1.2f, 2.9f, 0x5a5a40, 0x903020, TankInfected::attrs);
     public static final RegistryObject<EntityType<WitchInfected>> WITCH = inf("witch", WitchInfected::new, 0.6f, 1.6f, 0xe8e8e8, 0xb02020, WitchInfected::attrs);
     public static final RegistryObject<EntityType<MeatWallInfected>> MEATWALL = inf("meatwall", MeatWallInfected::new, 2.4f, 2.7f, 0x8a3a3a, 0x3a1010, MeatWallInfected::attrs);
+    public static final RegistryObject<EntityType<ScreamerInfected>> SCREAMER = inf("screamer", ScreamerInfected::new, 0.6f, 1.95f, 0xcfc8b4, 0x46382a, ScreamerInfected::attrs);
+    public static final RegistryObject<EntityType<CrawlerInfected>> CRAWLER = inf("crawler", CrawlerInfected::new, 0.7f, 0.8f, 0x6a604e, 0x702828, CrawlerInfected::attrs);
     // ---- projectiles / effects ----
     public static final RegistryObject<EntityType<AcidSpit>> ACID_SPIT = proj("acid_spit", AcidSpit::new, 0.4f, 0.4f, 8);
     public static final RegistryObject<EntityType<AcidPool>> ACID_POOL = proj("acid_pool", AcidPool::new, 3f, 0.3f, 8);

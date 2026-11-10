@@ -90,3 +90,29 @@ for p in ('right_shin', 'left_shin'): t.band(p, 0, 2, (20, 20, 24), from_bottom=
 t.fill('horn', (230, 190, 50), 5, cubes=[0]); t.fill('horn', (200, 60, 50), 5, cubes=[1])
 for p in ('collar', 'body', 'head', 'right_arm', 'left_leg'): t.blood(p, 4); t.grime(p, 4, (60, 40, 30), .4)
 t.save('clown'); glow(m, 'clown', [('head', 'front', 1, 3, (140, 255, 90)), ('head', 'front', 6, 3, (140, 255, 90))]); look(m, 'clown', 'clown')
+
+# ---------- SCREAMER: straitjacketed wailer (cut early-design concept: flees, then screams to call the horde) ----------
+s = base('screamer', inf_body=.4, inf_arm=.2, inf_leg=.2)
+s.part('jacket', 'body', cubes=[C((-4, -12, -2), (8, 12, 4), .7)])
+s.part('straps', 'body', cubes=[C((-5, -7, -2), (10, 2, 4), .9)])
+s.part('hair', 'head', cubes=[C((-4, -9, -4), (8, 2, 8), .8), C((-4, -8, 2), (8, 6, 3), .5)])
+m = s.save(); check(m); t = Paint(m, seed=26); J, ST = (206, 202, 190), (70, 56, 40)
+face(t, (150, 140, 128)); t.fill('hair', (60, 56, 52), 12); t.fill('body', J, 6); t.fill('jacket', J, 6); t.folds('jacket', .75, 6)
+limbs(t, J, J, (120, 118, 112), (110, 108, 100)); t.fill('straps', ST, 5)
+for p in ('right_forearm', 'left_forearm'): t.fill(p, J, 7); t.band(p, 2, 4, ST)
+t.paint('jacket', lambda f, i, j, w, h, o: ST if f == 'front' and i in (2, 5) and j % 3 == 0 else None, ('front',))
+for p in ('jacket', 'body', 'right_arm', 'left_arm', 'head', 'right_leg'): t.grime(p, 8, (110, 96, 70), .5); t.blood(p, 3)
+t.save('screamer'); glow(m, 'screamer', [('head', 'front', 1, 3, (255, 255, 255)), ('head', 'front', 6, 3, (255, 255, 255))]); look(m, 'screamer', 'screamer')
+
+# ---------- CRAWLER: legless, drags itself on its arms (original design) ----------
+s = base('crawler', inf_body=.4, inf_arm=.5, inf_leg=.2)
+s.by['right_leg']['cubes'] = [C((-2, 0, -2), (4, 4, 4))]; s.by['left_leg']['cubes'] = [C((-2, 0, -2), (4, 4, 4))]
+s.by['right_shin']['cubes'] = []; s.by['left_shin']['cubes'] = []
+s.part('claws_r', 'right_forearm', (0, 6, 0), cubes=[C((-2, 0, -3), (4, 1, 4))]); s.part('claws_l', 'left_forearm', (0, 6, 0), cubes=[C((-2, 0, -3), (4, 1, 4))])
+m = s.save(); check(m); t = Paint(m, seed=27)
+face(t, (120, 124, 98)); t.fill('body', (84, 70, 56), 10); t.folds('body', .75, 5); limbs(t, (110, 112, 90), (110, 112, 90), (60, 52, 46), (60, 52, 46))
+for p in ('right_forearm', 'left_forearm'): t.fill(p, (118, 120, 96), 10); t.band(p, 0, 2, (70, 40, 30))
+t.fill('claws_r', (190, 180, 150), 6); t.fill('claws_l', (190, 180, 150), 6)
+for p in ('right_leg', 'left_leg'): t.fill(p, (112, 40, 40), 14); t.blot(p, (210, 190, 150), 4, (1, 2), .8)    # raw stumps with bone
+for p in ('body', 'head', 'right_arm', 'left_arm', 'right_leg'): t.grime(p, 10, (60, 46, 30), .6); t.blood(p, 5)
+t.save('crawler'); glow(m, 'crawler', [('head', 'front', 1, 3, (255, 90, 60)), ('head', 'front', 6, 3, (255, 90, 60))]); look(m, 'crawler', 'crawler', pose={'body': (1.4, 0, 0)})
