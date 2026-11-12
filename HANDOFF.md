@@ -17,6 +17,8 @@
 ## 自動動作確認
 `L4D_SELFTEST=1 ./gradlew runServer` で全20種を湧かせ700tick動かしログ(`L4DTEST`)出力(SelfTest.java)。現状: 全種クラッシュなし、ウィッチ以外は攻撃action発動を確認。
 
+クライアント側: `L4D_SELFTEST=1 xvfb-run -a ./gradlew runClient` で全モデルのbake・レンダラ生成まで確認可(`L4DTEST CLIENT OK`)。
+
 ## 次にやること
 1. `runClient`で全20種(+Meat Wall, Screamer, Crawler)を確認(クリエイティブタブ「Left 4 Dead 感染者」→スポーンエッグ)。見た目/アニメ崩れ修正
 2. 要実機確認: Jockey騎乗表示、Hunter拘束、Smoker舌描画(`smoker_tongue.png`)、Tank岩投げ/ボスバー、Charger運搬/叩きつけ、Witch怒り遷移

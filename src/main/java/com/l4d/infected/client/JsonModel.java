@@ -50,7 +50,7 @@ public final class JsonModel {
 
     private static float[] f(JsonObject o, String k) {
         float[] r = new float[3];
-        if (o.has(k)) { JsonArray a = o.getAsJsonArray(k); for (int i = 0; i < 3; i++) r[i] = a.get(i).getAsFloat(); }
+        if (o.has(k)) { JsonArray a = o.getAsJsonArray(k); for (int i = 0; i < Math.min(3, a.size()); i++) r[i] = a.get(i).getAsFloat(); }
         return r;
     }
 }

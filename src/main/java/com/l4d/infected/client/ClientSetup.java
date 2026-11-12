@@ -49,6 +49,18 @@ public class ClientSetup {
         ALL.add(new Reg<>("witch", L4D.WITCH, WitchModel::new, 0.5f, 1f, 2));
     }
 
+    /** dev only (env L4D_SELFTEST): reaching the title screen proves every model json baked and every renderer built. */
+    @SubscribeEvent
+    public static void selfTest(net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent e) {
+        if (System.getenv("L4D_SELFTEST") == null) return;
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.addListener((net.minecraftforge.client.event.ScreenEvent.Init.Post ev) -> {
+            { // first screen after resource load (title or onboarding)
+                System.out.println("L4DTEST CLIENT OK");
+                net.minecraft.client.Minecraft.getInstance().stop();
+            }
+        });
+    }
+
     @SubscribeEvent
     public static void layers(EntityRenderersEvent.RegisterLayerDefinitions e) {
         for (Reg<?> r : ALL) e.registerLayerDefinition(r.layer(), () -> JsonModel.load(r.name()));
