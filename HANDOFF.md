@@ -19,6 +19,11 @@
 
 クライアント側: `L4D_SELFTEST=1 xvfb-run -a ./gradlew runClient` で全モデルのbake・レンダラ生成まで確認可(`L4DTEST CLIENT OK`)。
 
+## 最新
+- 標的切替(Infected.retarget): 攻撃してきた敵・近くの敵へ自動で切替
+- Meat Wall: 高さ約6.4ブロック・HP2500(Tank超え)。地割れ3方向/5方向、体から感染者を引き抜き3体投擲、掴み(握り→投げ)、死亡時爆発
+- Common系に SHOVE(突き飛ばし)/BITE(噛みつき)アニメ追加
+
 ## 次にやること
 1. `runClient`で全20種(+Meat Wall, Screamer, Crawler)を確認(クリエイティブタブ「Left 4 Dead 感染者」→スポーンエッグ)。見た目/アニメ崩れ修正
 2. 要実機確認: Jockey騎乗表示、Hunter拘束、Smoker舌描画(`smoker_tongue.png`)、Tank岩投げ/ボスバー、Charger運搬/叩きつけ、Witch怒り遷移
