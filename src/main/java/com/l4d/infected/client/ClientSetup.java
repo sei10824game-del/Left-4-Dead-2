@@ -43,7 +43,7 @@ public class ClientSetup {
         ALL.add(new Reg<>("jockey", L4D.JOCKEY, JockeyModel::new, 0.4f, 1f, 0));
         ALL.add(new Reg<>("charger", L4D.CHARGER, ChargerModel::new, 0.9f, 1f, 0));
         ALL.add(new Reg<>("tank", L4D.TANK, TankModel::new, 1.4f, 1f, 0));
-        ALL.add(new Reg<>("meatwall", L4D.MEATWALL, MeatWallModel::new, 1.8f, 1f, 0));
+        ALL.add(new Reg<>("meatwall", L4D.MEATWALL, MeatWallModel::new, 2.6f, 2.3f, 0));
         ALL.add(new Reg<>("screamer", L4D.SCREAMER, ScreamerModel::new, 0.5f, 1f, 0));
         ALL.add(new Reg<>("crawler", L4D.CRAWLER, CrawlerModel::new, 0.4f, 1f, 0));
         ALL.add(new Reg<>("witch", L4D.WITCH, WitchModel::new, 0.5f, 1f, 2));

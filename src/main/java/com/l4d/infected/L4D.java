@@ -73,7 +73,7 @@ public class L4D {
     public static final RegistryObject<EntityType<ChargerInfected>> CHARGER = inf("charger", ChargerInfected::new, 0.95f, 2.1f, 0x5a4a58, 0xb04040, ChargerInfected::attrs);
     public static final RegistryObject<EntityType<TankInfected>> TANK = inf("tank", TankInfected::new, 1.2f, 2.9f, 0x5a5a40, 0x903020, TankInfected::attrs);
     public static final RegistryObject<EntityType<WitchInfected>> WITCH = inf("witch", WitchInfected::new, 0.6f, 1.6f, 0xe8e8e8, 0xb02020, WitchInfected::attrs);
-    public static final RegistryObject<EntityType<MeatWallInfected>> MEATWALL = inf("meatwall", MeatWallInfected::new, 2.4f, 2.7f, 0x8a3a3a, 0x3a1010, MeatWallInfected::attrs);
+    public static final RegistryObject<EntityType<MeatWallInfected>> MEATWALL = inf("meatwall", MeatWallInfected::new, 3.6f, 6.4f, 0x8a3a3a, 0x3a1010, MeatWallInfected::attrs);
     public static final RegistryObject<EntityType<ScreamerInfected>> SCREAMER = inf("screamer", ScreamerInfected::new, 0.6f, 1.95f, 0xcfc8b4, 0x46382a, ScreamerInfected::attrs);
     public static final RegistryObject<EntityType<CrawlerInfected>> CRAWLER = inf("crawler", CrawlerInfected::new, 0.7f, 0.8f, 0x6a604e, 0x702828, CrawlerInfected::attrs);
     // ---- projectiles / effects ----

@@ -23,7 +23,7 @@ import java.util.EnumSet;
  */
 public class CommonInfected extends Infected {
     public static final int VARIANTS = 6;
-    public static final int SLAM = 10, LUNGE = 11, STUMBLE = 12;
+    public static final int SLAM = 10, LUNGE = 11, STUMBLE = 12, SHOVE = 13, BITE = 14;
     protected int specialCooldown = 40;
     private boolean leapHit;
     /** client: smoothed 0..1 "aggro run" blend for the model. */
@@ -46,11 +46,11 @@ public class CommonInfected extends Infected {
 
     /** pick a special attack, or NONE to leave it to the claw. dist = distance to target. */
     protected int chooseAttack(LivingEntity t, double dist) {
-        if (inReach(t) && random.nextFloat() < 0.3f) return SLAM;
+        if (inReach(t)) { float r = random.nextFloat(); if (r < 0.2f) return SLAM; if (r < 0.35f) return SHOVE; if (r < 0.5f) return BITE; }
         if (dist > 3 && dist < 6.5 && onGround() && hasLineOfSight(t) && random.nextFloat() < 0.35f) return LUNGE;
         return NONE;
     }
-    protected int actionLength(int id) { return id == SLAM ? 22 : id == STUMBLE ? 18 : 22; }
+    protected int actionLength(int id) { return id == SLAM ? 22 : id == STUMBLE ? 18 : id == SHOVE ? 18 : id == BITE ? 20 : 22; }
     protected int attackCooldown(int id) { return 30 + random.nextInt(40); }
 
     @Override
@@ -61,6 +61,14 @@ public class CommonInfected extends Infected {
                 if (t == 11 && hitTarget(1.6f)) playSound(SoundEvents.ZOMBIE_ATTACK_WOODEN_DOOR, 0.7f, 0.8f);
             }
             case LUNGE -> leap(t, 7, 0.42, 1.3f);
+            case SHOVE -> {                                  // two-handed push: arms thrust on frame 8, target is flung back
+                if (t == 0) playSound(SoundEvents.ZOMBIE_AMBIENT, 1f, 0.8f);
+                if (t == 8 && hitTarget(0.7f)) { shove(getTarget(), 1.1, 0.3); playSound(SoundEvents.PLAYER_ATTACK_KNOCKBACK, 0.8f, 0.8f); }
+            }
+            case BITE -> {                                   // seize with both hands, then snap the jaw on frame 11
+                if (t == 4) playSound(SoundEvents.ZOMBIE_ATTACK_WOODEN_DOOR, 0.5f, 1.4f);
+                if (t == 11 && hitTarget(1.3f)) { playSound(SoundEvents.ZOMBIE_INFECT, 0.7f, 1.3f); heal(1f); }
+            }
             case STUMBLE -> {
                 if (t == 0) { getNavigation().stop(); setDeltaMovement(getDeltaMovement().scale(0.4)); }
                 if (t == 5) playSound(SoundEvents.ZOMBIE_STEP, 0.8f, 0.6f);

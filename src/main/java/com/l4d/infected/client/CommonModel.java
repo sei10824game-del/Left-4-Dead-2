@@ -116,6 +116,8 @@ public class CommonModel<T extends CommonInfected> extends InfectedModel<T> {
             case CommonInfected.SLAM -> slam(p);
             case CommonInfected.LUNGE -> lunge(p);
             case CommonInfected.STUMBLE -> stumble(p);
+            case CommonInfected.SHOVE -> shove(p);
+            case CommonInfected.BITE -> bite(p);
             default -> {}
         }
     }
@@ -137,6 +139,35 @@ public class CommonModel<T extends CommonInfected> extends InfectedModel<T> {
         to(ll, w, k(p, SLAM_T, 0, -0.1f, 0.35f, 0.35f, 0), 0, 0);
         to(ls, w, k(p, SLAM_T, 0, 0.1f, 0.3f, 0.3f, 0), 0, 0);
         part("jaw").xRot = lerp(part("jaw").xRot, k(p, SLAM_T, 0.1f, 0.6f, 0.15f, 0.2f, 0.1f), w);
+    }
+
+    static final float[] SHOVE_T = {0, .35f, .45f, .6f, 1};
+    /** hands drawn back to the chest, whole body winds up then drives both palms out; the weight shifts onto the front foot. */
+    protected void shove(float p) {
+        float w = k(p, new float[]{0, .1f, .8f, 1}, 0, 1, 1, 0);
+        to(ra, w, k(p, SHOVE_T, -0.3f, -0.9f, -1.65f, -1.4f, -0.3f), k(p, SHOVE_T, 0, 0.25f, -0.05f, 0, 0), 0.15f);
+        to(la, w, k(p, SHOVE_T, -0.3f, -0.9f, -1.65f, -1.4f, -0.3f), k(p, SHOVE_T, 0, -0.25f, 0.05f, 0, 0), -0.15f);
+        to(rf, w, k(p, SHOVE_T, -0.3f, -1.9f, -0.15f, -0.3f, -0.3f), 0, 0); to(lf, w, k(p, SHOVE_T, -0.3f, -1.9f, -0.15f, -0.3f, -0.3f), 0, 0);
+        to(body, w, k(p, SHOVE_T, 0.15f, -0.25f, 0.55f, 0.45f, 0.15f), 0, 0);
+        head.xRot += w * k(p, SHOVE_T, 0, -0.2f, 0.25f, 0.15f, 0);
+        drop(w * k(p, SHOVE_T, 0, 0.6f, 1.2f, 1f, 0));
+        to(rl, w, k(p, SHOVE_T, 0, 0.3f, -0.6f, -0.5f, 0), 0, 0); to(rs, w, k(p, SHOVE_T, 0, 0.3f, 0.7f, 0.6f, 0), 0, 0);
+        to(ll, w, k(p, SHOVE_T, 0, -0.4f, 0.4f, 0.3f, 0), 0, 0);
+        part("jaw").xRot = lerp(part("jaw").xRot, k(p, SHOVE_T, 0.1f, 0.2f, 0.7f, 0.4f, 0.1f), w);
+    }
+
+    static final float[] BITE_T = {0, .22f, .4f, .55f, .75f, 1};
+    /** arms reach out and clamp onto the victim, head cocks back, then dives at the throat with a jaw snap and shakes. */
+    protected void bite(float p) {
+        float w = k(p, new float[]{0, .1f, .85f, 1}, 0, 1, 1, 0), shake = sin(age * 2.4f) * smooth(seg(p, .55f, .65f)) * (1 - smooth(seg(p, .65f, .85f)));
+        to(ra, w, k(p, BITE_T, -0.3f, -1.9f, -1.7f, -1.5f, -1.2f, -0.3f), k(p, BITE_T, 0, 0.15f, -0.2f, -0.2f, -0.2f, 0), 0.1f);
+        to(la, w, k(p, BITE_T, -0.3f, -1.9f, -1.7f, -1.5f, -1.2f, -0.3f), k(p, BITE_T, 0, -0.15f, 0.2f, 0.2f, 0.2f, 0), -0.1f);
+        to(rf, w, k(p, BITE_T, -0.3f, -0.3f, -0.9f, -1.0f, -0.8f, -0.3f), 0, 0); to(lf, w, k(p, BITE_T, -0.3f, -0.3f, -0.9f, -1.0f, -0.8f, -0.3f), 0, 0);
+        to(body, w, k(p, BITE_T, 0.15f, 0.2f, -0.2f, 0.7f, 0.6f, 0.15f), 0, 0);
+        head.xRot += w * k(p, BITE_T, 0, 0.1f, -0.55f, 0.55f, 0.4f, 0);
+        head.zRot += 0.35f * shake;
+        part("jaw").xRot = lerp(part("jaw").xRot, k(p, BITE_T, 0.1f, 0.2f, 1.0f, 0.05f, 0.2f, 0.1f), w);
+        drop(w * k(p, BITE_T, 0, 0.3f, 0.2f, 1.4f, 1.2f, 0));
     }
 
     static final float[] LUNGE_T = {0, .3f, .38f, .6f, .75f, .85f, 1};

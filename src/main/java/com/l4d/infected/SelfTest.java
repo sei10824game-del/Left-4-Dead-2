@@ -37,6 +37,13 @@ public class SelfTest {
             }
         }
         for (Infected m : mobs) if (m.isAlive()) actions.get(m).add(m.action());
+        // force the Meat Wall's scripted attacks and its death explosion so their code paths run at least once
+        for (Infected m : mobs) if (m instanceof com.l4d.infected.entity.MeatWallInfected w && w.isAlive()) {
+            if (tick == 300) w.startAction(com.l4d.infected.entity.MeatWallInfected.CRACK5, 48);
+            if (tick == 400) w.startAction(com.l4d.infected.entity.MeatWallInfected.CRACK3, 40);
+            if (tick == 500) w.startAction(com.l4d.infected.entity.MeatWallInfected.GRAB, 76);
+            if (tick == 650) w.kill();
+        }
         if (tick == 700) {
             for (Infected m : mobs) {
                 Villager v = prey.get(m);

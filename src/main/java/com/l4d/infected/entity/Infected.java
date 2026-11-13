@@ -166,6 +166,26 @@ public abstract class Infected extends Monster {
         for (Infected i : l) if (random.nextFloat() < 0.8f) i.setTarget(t);
     }
 
+    // ---------- target switching ----------
+    /** Re-picks the target so a far-off victim never keeps us busy while something else is chewing on us. */
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (!level().isClientSide && tickCount % 5 == 0 && !(this instanceof WitchInfected) && (!busy() || action() == CLAW)) retarget();
+    }
+
+    private void retarget() {
+        LivingEntity t = getTarget(), atk = getLastHurtByMob();
+        double dt = t == null ? Double.MAX_VALUE : distanceToSqr(t);
+        if (atk != null && atk != t && tickCount - getLastHurtByMobTimestamp() < 100 && atk.isAlive() && canAttack(atk) && isEnemy(atk)
+                && (dt > 36 || distanceToSqr(atk) < dt)) { setTarget(atk); return; }
+        if (t != null && dt > 49) {                    // current victim is far: take a much closer enemy instead
+            LivingEntity c = level().getNearestEntity(level().getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(6, 3, 6), e -> e != t && canAttack(e) && isEnemy(e) && hasLineOfSight(e)),
+                    net.minecraft.world.entity.ai.targeting.TargetingConditions.forCombat().ignoreLineOfSight(), this, getX(), getY(), getZ());
+            if (c != null) setTarget(c);
+        }
+    }
+
     // ---------- AI ----------
     @Override
     protected void registerGoals() {
